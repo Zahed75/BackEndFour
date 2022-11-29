@@ -17,5 +17,8 @@ router.get("/listUser", ProfileController.getUserData)
 
 //Kitchen API SECTION-JWT NEEDED
 router.post("/brandCreate", AuthVerifyMiddleware, KitchenController.createBrand)
+router.get("/updateOutlet/:id/:outletStatus", AuthVerifyMiddleware, KitchenController.updateBrand)
+router.get("/deleteBrand/:id", AuthVerifyMiddleware, KitchenController.deleteBrand)
+router.get("/searchBrand/:brandName", AuthVerifyMiddleware, KitchenController.searchBrand)
 
 module.exports = router;
