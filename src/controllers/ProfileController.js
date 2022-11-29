@@ -37,7 +37,7 @@ exports.Login = (req, res) => {
 }
 
 
-// User Profile Update\
+// User Profile Update
 
 
 exports.ProfileUpdate = (req, res) => {
@@ -50,4 +50,18 @@ exports.ProfileUpdate = (req, res) => {
             res.status(200).json({status: "Your Profile has been Updated!", data: data})
         }
     })
+}
+
+// Manage List of All User Data
+
+exports.getUserData = (req, res) => {
+
+    UserModel.find({}, (err, data) => {
+        if (err) {
+            res.status(401).json({status: "Failed", data: err})
+        } else {
+            res.status(200).json({status: "All User List!", data: data})
+        }
+    })
+
 }
