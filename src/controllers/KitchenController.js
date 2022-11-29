@@ -77,3 +77,27 @@ exports.searchBrand = (req, res) => {
 }
 
 
+//Brand Read/List By Status
+
+exports.listByStatus = (req, res) => {
+    let outletStatus = req.params.outletStatus;
+    let phone = req.headers['phone'];
+    KitchenModel.aggregate([
+        {$match: {outletStatus: outletStatus, phone: phone}},
+        {
+            $project: {
+                _id: 1, brandName: 1, outletStatus: 1, ownerName: 1, subdomain: 1
+            }
+        }
+    ], (err, data) => {
+        if (err) {
+            res.status(400).json({status: "Something Went Wrong", data: err})
+        } else {
+            res.status(200).json({status: "Brand Status List", data: data})
+        }
+    })
+}
+
+
+//Brand Filter By ON/OFF-Summary Count
+

@@ -20,5 +20,6 @@ router.post("/brandCreate", AuthVerifyMiddleware, KitchenController.createBrand)
 router.get("/updateOutlet/:id/:outletStatus", AuthVerifyMiddleware, KitchenController.updateBrand)
 router.get("/deleteBrand/:id", AuthVerifyMiddleware, KitchenController.deleteBrand)
 router.get("/searchBrand/:brandName", AuthVerifyMiddleware, KitchenController.searchBrand)
+router.get("/listByStatus/:outletStatus", AuthVerifyMiddleware, KitchenController.listByStatus)
 
 module.exports = router;
