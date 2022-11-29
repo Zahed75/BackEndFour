@@ -21,5 +21,5 @@ router.get("/updateOutlet/:id/:outletStatus", AuthVerifyMiddleware, KitchenContr
 router.get("/deleteBrand/:id", AuthVerifyMiddleware, KitchenController.deleteBrand)
 router.get("/searchBrand/:brandName", AuthVerifyMiddleware, KitchenController.searchBrand)
 router.get("/listByStatus/:outletStatus", AuthVerifyMiddleware, KitchenController.listByStatus)
-
+router.get("/filterBrandCount", AuthVerifyMiddleware, KitchenController.filterCountBrand)
 module.exports = router;

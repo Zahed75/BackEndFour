@@ -101,3 +101,17 @@ exports.listByStatus = (req, res) => {
 
 //Brand Filter By ON/OFF-Summary Count
 
+exports.filterCountBrand = (req, res) => {
+    let phone = req.headers['phone']
+    KitchenModel.aggregate([
+        {$match: {phone: phone}},
+        {$group: {_id: "$outletStatus", outletStatusSum: {$count: {}}}}
+
+    ], (err, data) => {
+        if (err) {
+            res.status(400).json({status: "Something Went Wrong", data: err})
+        } else {
+            res.status(200).json({status: "Successfully Found the Status Count!", data: data})
+        }
+    })
+}
